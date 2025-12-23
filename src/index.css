@@ -2,58 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 220 30% 6%;
-    --foreground: 210 40% 98%;
+    /* Megatron Theme - Metallic, Robotic, Futuristic */
+    --background: 220 15% 4%;
+    --foreground: 210 20% 90%;
 
-    --card: 220 25% 10%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 15% 8%;
+    --card-foreground: 210 20% 95%;
 
-    --popover: 220 25% 10%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 15% 8%;
+    --popover-foreground: 210 20% 95%;
 
-    --primary: 16 90% 60%;
-    --primary-foreground: 220 30% 6%;
+    /* Electric Cyan - Primary */
+    --primary: 195 100% 50%;
+    --primary-foreground: 220 15% 4%;
 
-    --secondary: 230 60% 50%;
-    --secondary-foreground: 210 40% 98%;
+    /* Chrome Silver */
+    --secondary: 210 10% 70%;
+    --secondary-foreground: 220 15% 4%;
 
-    --muted: 220 20% 18%;
-    --muted-foreground: 215 20% 65%;
+    /* Gunmetal */
+    --muted: 220 10% 15%;
+    --muted-foreground: 210 15% 55%;
 
-    --accent: 280 70% 60%;
-    --accent-foreground: 210 40% 98%;
+    /* Danger Red - Decepticon accent */
+    --accent: 0 85% 55%;
+    --accent-foreground: 210 20% 98%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 85% 55%;
+    --destructive-foreground: 210 20% 98%;
 
-    --border: 220 20% 20%;
-    --input: 220 20% 20%;
-    --ring: 16 90% 60%;
+    --border: 210 15% 18%;
+    --input: 210 15% 18%;
+    --ring: 195 100% 50%;
 
-    --radius: 0.75rem;
+    --radius: 0.25rem;
 
-    /* Custom tokens */
-    --gradient-hero: linear-gradient(135deg, hsl(230 60% 50%) 0%, hsl(280 70% 60%) 50%, hsl(16 90% 60%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(220 25% 12%) 0%, hsl(220 25% 8%) 100%);
-    --gradient-text: linear-gradient(90deg, hsl(16 90% 60%) 0%, hsl(280 70% 60%) 100%);
-    --glow-primary: 0 0 60px hsl(16 90% 60% / 0.3);
-    --glow-accent: 0 0 80px hsl(280 70% 60% / 0.2);
+    /* Custom Megatron tokens */
+    --gradient-hero: linear-gradient(135deg, hsl(220 15% 8%) 0%, hsl(210 20% 12%) 50%, hsl(195 100% 15%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(220 15% 10%) 0%, hsl(220 15% 6%) 100%);
+    --gradient-text: linear-gradient(90deg, hsl(195 100% 50%) 0%, hsl(210 10% 85%) 50%, hsl(0 85% 55%) 100%);
+    --gradient-chrome: linear-gradient(135deg, hsl(210 10% 80%) 0%, hsl(210 10% 50%) 50%, hsl(210 10% 70%) 100%);
+    --glow-primary: 0 0 60px hsl(195 100% 50% / 0.4);
+    --glow-accent: 0 0 80px hsl(0 85% 55% / 0.3);
+    --glow-chrome: 0 0 40px hsl(210 10% 70% / 0.2);
 
-    --font-display: 'Sora', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --font-display: 'Orbitron', sans-serif;
+    --font-body: 'Rajdhani', sans-serif;
 
-    --sidebar-background: 220 25% 10%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 16 90% 60%;
-    --sidebar-primary-foreground: 220 30% 6%;
-    --sidebar-accent: 220 20% 18%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 220 20% 20%;
-    --sidebar-ring: 16 90% 60%;
+    --sidebar-background: 220 15% 8%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 195 100% 50%;
+    --sidebar-primary-foreground: 220 15% 4%;
+    --sidebar-accent: 220 10% 15%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 210 15% 18%;
+    --sidebar-ring: 195 100% 50%;
   }
 }
 
@@ -80,6 +87,13 @@
     background-clip: text;
   }
 
+  .text-chrome {
+    background: var(--gradient-chrome);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
   .bg-gradient-hero {
     background: var(--gradient-hero);
   }
@@ -92,10 +106,33 @@
     box-shadow: var(--glow-accent);
   }
 
+  .glow-chrome {
+    box-shadow: var(--glow-chrome);
+  }
+
   .bg-grid-pattern {
     background-image: 
-      linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
-    background-size: 60px 60px;
+      linear-gradient(hsl(var(--border) / 0.5) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.5) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .bg-circuit-pattern {
+    background-image: 
+      linear-gradient(90deg, hsl(var(--primary) / 0.1) 1px, transparent 1px),
+      linear-gradient(hsl(var(--primary) / 0.1) 1px, transparent 1px),
+      radial-gradient(circle at 50% 50%, hsl(var(--primary) / 0.05) 1px, transparent 1px);
+    background-size: 40px 40px, 40px 40px, 20px 20px;
+  }
+
+  .metallic-border {
+    border: 1px solid hsl(var(--secondary) / 0.3);
+    box-shadow: 
+      inset 0 1px 0 hsl(var(--secondary) / 0.2),
+      0 2px 8px hsl(0 0% 0% / 0.5);
+  }
+
+  .cyber-clip {
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
   }
 }
