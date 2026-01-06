@@ -6,6 +6,7 @@ import TechnicalEvents from "@/components/TechnicalEvents";
 import Workshops from "@/components/Workshops";
 import Schedule from "@/components/Schedule";
 import Register from "@/components/Register";
+import Sponsors from "@/components/Sponsors";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScanLineOverlay from "@/components/ScanLineOverlay";
@@ -32,6 +33,7 @@ const Index = () => {
           <Workshops />
           <Schedule />
           <Register />
+          <Sponsors />
           <Contact />
         </main>
         <Footer />
