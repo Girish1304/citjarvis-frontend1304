@@ -4,16 +4,27 @@ import { Clock, MapPin, ChevronRight } from "lucide-react";
 
 const scheduleData = {
   "MORNING": [
+    { time: "08:30", title: "Registration & Check-in", venue: "Main Entrance", type: "ceremony" },
     { time: "09:00", title: "Opening Ceremony", venue: "Main Auditorium", type: "ceremony" },
-    { time: "09:30", title: "Keynote: Future of AI", venue: "Main Auditorium", type: "talk" },
-    { time: "10:30", title: "Workshop: AI & Machine Learning", venue: "Lab 101", type: "workshop" },
-    { time: "11:30", title: "Hackathon Kickoff", venue: "Innovation Lab", type: "event" },
+    { time: "09:30", title: "IoT Workshop", venue: "Lab 101", type: "workshop" },
+    { time: "09:30", title: "Industrial Automation Workshop", venue: "Lab 102", type: "workshop" },
+    { time: "09:30", title: "ROS2 Workshop", venue: "Lab 103", type: "workshop" },
+    { time: "10:00", title: "Robo War - Prelims", venue: "Arena A", type: "event" },
+    { time: "10:00", title: "Tech Quiz - Round 1", venue: "Seminar Hall", type: "event" },
+    { time: "11:00", title: "Line Following Robot", venue: "Arena B", type: "event" },
+    { time: "11:00", title: "Paper Presentation", venue: "Conference Room 1", type: "event" },
   ],
   "AFTERNOON": [
-    { time: "13:00", title: "Code Wars Competition", venue: "Computer Lab", type: "event" },
-    { time: "14:30", title: "Panel: Tech Startup Journey", venue: "Seminar Hall", type: "talk" },
-    { time: "15:30", title: "Project Expo", venue: "Exhibition Hall", type: "event" },
-    { time: "17:00", title: "Prize Distribution & Closing", venue: "Main Auditorium", type: "ceremony" },
+    { time: "13:00", title: "BAJA Vehicle Building Workshop", venue: "Workshop Bay", type: "workshop" },
+    { time: "13:00", title: "KUKA Robotics Workshop", venue: "Robotics Lab", type: "workshop" },
+    { time: "13:00", title: "SAP Workshop", venue: "Computer Lab", type: "workshop" },
+    { time: "13:30", title: "RC Adventure", venue: "Outdoor Track", type: "event" },
+    { time: "14:00", title: "Robo War - Finals", venue: "Arena A", type: "event" },
+    { time: "14:00", title: "Project Presentation", venue: "Exhibition Hall", type: "event" },
+    { time: "14:30", title: "Tech Connexions", venue: "Seminar Hall", type: "event" },
+    { time: "15:00", title: "Robo Tug of War", venue: "Arena B", type: "event" },
+    { time: "15:30", title: "Maze Simulation", venue: "Simulation Lab", type: "event" },
+    { time: "16:30", title: "Prize Distribution & Closing", venue: "Main Auditorium", type: "ceremony" },
   ],
 };
 
