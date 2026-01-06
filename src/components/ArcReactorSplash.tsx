@@ -12,7 +12,7 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
   const [isBooting, setIsBooting] = useState(false);
   const [currentLine, setCurrentLine] = useState("");
   const { playClickSound, playBootSound, playAmbientHum } = useArcReactorSounds();
-  const { speakLine, getLineForClick } = useJarvisVoice();
+  const { speakLine, getLineForClick, preloadAll } = useJarvisVoice();
   const hasStartedRef = useRef(false);
 
   // Start ambient hum after first interaction
@@ -27,6 +27,12 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
     if (isBooting) return;
     
     const newCount = clickCount + 1;
+    
+    // Preload all audio on first click
+    if (newCount === 1) {
+      preloadAll();
+    }
+    
     setClickCount(newCount);
     playClickSound(newCount);
 
@@ -35,7 +41,7 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
     if (line) {
       setCurrentLine(line);
       // Don't await - let voice play in background
-      speakLine(line);
+      speakLine(newCount);
     }
 
     if (newCount >= 5) {
@@ -43,9 +49,9 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
       playBootSound();
       setTimeout(() => {
         onComplete();
-      }, 2500); // Extended to allow final voice line to play
+      }, 2500);
     }
-  }, [clickCount, isBooting, onComplete, playClickSound, playBootSound, getLineForClick, speakLine]);
+  }, [clickCount, isBooting, onComplete, playClickSound, playBootSound, getLineForClick, speakLine, preloadAll]);
 
   const powerLevel = (clickCount / 5) * 100;
   const glowIntensity = 0.15 + (clickCount * 0.17);
