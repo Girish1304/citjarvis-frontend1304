@@ -40,13 +40,13 @@ const Navbar = () => {
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
         
         <div className="container px-6">
-          <div className="flex items-center justify-between h-16 md:h-20">
+          <div className="flex items-center justify-between h-20 md:h-24">
             {/* Logo */}
             <a href="#" className="flex items-center gap-2">
               <img 
                 src={jarvisLogo} 
                 alt="JARVIS 2026" 
-                className="h-10 md:h-12 w-auto"
+                className="h-14 md:h-16 w-auto"
               />
             </a>
 
