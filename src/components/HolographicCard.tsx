@@ -33,32 +33,25 @@ const HolographicCard = ({ children, className = "", delay = 0, variant = "prima
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
+      whileHover={{ scale: 1.02, y: -5 }}
       className={`relative group ${className}`}
     >
       {/* Animated border glow on hover */}
-      <div className={`absolute -inset-px bg-gradient-to-r ${glowColors[variant]} opacity-0 group-hover:opacity-40 transition-opacity duration-500 blur-sm`} />
+      <div className={`absolute -inset-1 bg-gradient-to-r ${glowColors[variant]} opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-xl rounded-2xl`} />
       
-      {/* Main card */}
-      <div className={`relative bg-card/60 backdrop-blur-sm border ${borderColors[variant]} transition-all duration-300 overflow-hidden`}>
+      {/* Main card - GoatFundedTrader glassmorphism style */}
+      <div className={`relative bg-gradient-to-br from-card/90 to-card/50 backdrop-blur-xl border ${borderColors[variant]} transition-all duration-500 overflow-hidden rounded-2xl`}>
+        {/* Premium glass shine effect */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.08] via-transparent to-transparent" />
+        
         {/* Holographic shimmer effect */}
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
         
-        {/* Scan line effect */}
-        <motion.div
-          className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent pointer-events-none"
-          initial={{ top: 0 }}
-          animate={{ top: ["0%", "100%"] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-        />
+        {/* Top accent line */}
+        <div className={`absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent ${glowColors[variant]} to-transparent opacity-50`} />
         
-        {/* Corner accents */}
-        <div className={`absolute top-0 left-0 w-4 h-4 border-l-2 border-t-2 ${cornerColors[variant]}`} />
-        <div className={`absolute top-0 right-0 w-4 h-4 border-r-2 border-t-2 ${cornerColors[variant]}`} />
-        <div className={`absolute bottom-0 left-0 w-4 h-4 border-l-2 border-b-2 ${cornerColors[variant]}`} />
-        <div className={`absolute bottom-0 right-0 w-4 h-4 border-r-2 border-b-2 ${cornerColors[variant]}`} />
-        
-        {/* Data stream overlay */}
-        <div className="absolute inset-0 data-stream opacity-30 pointer-events-none" />
+        {/* Corner accent glow */}
+        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         
         {/* Content */}
         <div className="relative z-10">

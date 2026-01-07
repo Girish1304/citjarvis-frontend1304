@@ -45,16 +45,16 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
           className="text-center max-w-5xl mx-auto"
         >
-          {/* Main heading - with parallax */}
+          {/* Main heading - GoatFundedTrader style bold italic */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
             style={{ y: titleY, opacity }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6"
+            className="text-6xl md:text-8xl lg:text-[10rem] font-display tracking-wider mb-4 leading-[0.9]"
           >
-            <span className="text-foreground">JARVIS</span>
-            <span className="text-gradient"> 2026</span>
+            <span className="text-foreground block">JARVIS</span>
+            <span className="text-gradient block">2026</span>
           </motion.h1>
 
           {/* Tagline - with parallax */}
@@ -63,9 +63,9 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
             style={{ y: taglineY, opacity }}
-            className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-8 font-light tracking-wide"
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 font-body tracking-wide"
           >
-            The premier technical symposium where <span className="text-primary">machines</span> meet <span className="text-secondary">innovation</span>
+            The premier technical symposium where <span className="text-primary font-semibold">machines</span> meet <span className="text-secondary font-semibold">innovation</span>
           </motion.p>
 
           {/* Event details - with parallax */}
@@ -132,7 +132,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.6 }}
             style={{ y: statsY }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-20 max-w-3xl mx-auto"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-16 max-w-4xl mx-auto"
           >
             {[
               { value: "15+", label: "EVENTS" },
@@ -148,17 +148,23 @@ const Hero = () => {
                 whileHover={{ 
                   rotateX: -5, 
                   rotateY: 5, 
-                  scale: 1.05,
-                  boxShadow: "0 20px 40px -10px hsl(45 100% 50% / 0.3)"
+                  scale: 1.02,
+                  boxShadow: "0 25px 50px -12px hsl(42 100% 50% / 0.25)"
                 }}
                 style={{ transformStyle: "preserve-3d", perspective: 1000 }}
-                className="p-5 bg-card/40 border border-border/50 backdrop-blur-sm hover:border-primary/60 transition-colors cursor-pointer"
+                className="relative p-6 rounded-2xl bg-gradient-to-br from-card/80 to-card/40 border border-border/30 backdrop-blur-xl hover:border-primary/50 transition-all duration-300 cursor-pointer overflow-hidden group"
               >
-                <motion.div style={{ transform: "translateZ(20px)" }}>
-                  <div className="text-3xl md:text-4xl font-bold text-gradient mb-1">
+                {/* Glassmorphism shine effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                {/* Corner accent */}
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary/10 to-transparent rounded-bl-full" />
+                
+                <motion.div style={{ transform: "translateZ(20px)" }} className="relative z-10">
+                  <div className="text-4xl md:text-5xl font-display text-gradient mb-2 tracking-wide">
                     {stat.value}
                   </div>
-                  <div className="text-[10px] text-muted-foreground tracking-[0.2em] font-mono">{stat.label}</div>
+                  <div className="text-xs text-muted-foreground tracking-[0.15em] font-body uppercase">{stat.label}</div>
                 </motion.div>
               </motion.div>
             ))}
