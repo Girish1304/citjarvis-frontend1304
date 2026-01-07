@@ -1,174 +1,199 @@
 import { motion } from "framer-motion";
-import { useMemo } from "react";
-
-interface Particle {
-  id: number;
-  x: number;
-  y: number;
-  size: number;
-  duration: number;
-  delay: number;
-  color: 'purple' | 'red';
-}
 
 const PremiumBackground = () => {
-  const particles = useMemo<Particle[]>(() => {
-    return Array.from({ length: 60 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 4 + 2,
-      duration: Math.random() * 20 + 15,
-      delay: Math.random() * 8,
-      color: Math.random() > 0.3 ? 'purple' : 'red',
-    }));
-  }, []);
-
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-      {/* Deep purple-black base */}
-      <div className="absolute inset-0 bg-[#0a0512]" />
-
-      {/* Purple nebula glow - top center */}
-      <motion.div 
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[70%]"
-        style={{
-          background: "radial-gradient(ellipse 80% 50% at 50% 15%, hsl(280 70% 35% / 0.4) 0%, hsl(290 60% 20% / 0.2) 30%, transparent 60%)"
-        }}
-        animate={{
-          opacity: [0.6, 0.9, 0.6],
-        }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      {/* Red eye glow accent */}
-      <motion.div 
-        className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[300px] h-[100px]"
-        style={{
-          background: "radial-gradient(ellipse, hsl(0 100% 50% / 0.3) 0%, transparent 70%)"
-        }}
-        animate={{
-          opacity: [0.4, 0.8, 0.4],
-          scale: [1, 1.1, 1],
-        }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      {/* Purple fog at bottom */}
-      <div 
-        className="absolute bottom-0 left-0 right-0 h-[60%]"
-        style={{
-          background: "linear-gradient(to top, hsl(280 60% 25% / 0.35) 0%, hsl(290 50% 20% / 0.2) 30%, transparent 100%)"
-        }}
-      />
-
-      {/* Animated fog waves */}
-      <motion.div 
-        className="absolute bottom-0 left-0 right-0 h-[40%]"
-        style={{
-          background: "radial-gradient(ellipse 100% 60% at 50% 100%, hsl(280 70% 30% / 0.4) 0%, transparent 70%)"
-        }}
-        animate={{
-          opacity: [0.5, 0.8, 0.5],
-        }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-      />
-
-      {/* Subtle grid overlay */}
-      <div 
-        className="absolute inset-0 opacity-20"
-        style={{
-          backgroundImage: `
-            linear-gradient(90deg, hsl(280 100% 65% / 0.05) 1px, transparent 1px),
-            linear-gradient(hsl(280 100% 65% / 0.05) 1px, transparent 1px)
-          `,
-          backgroundSize: '80px 80px',
-        }}
-      />
-
-      {/* Stars/particles */}
+    <div className="fixed inset-0 overflow-hidden pointer-events-none">
+      {/* Deep dark base */}
       <div 
         className="absolute inset-0"
         style={{
-          backgroundImage: `radial-gradient(2px 2px at 20% 30%, hsl(280 100% 80% / 0.3) 0%, transparent 100%),
-                           radial-gradient(2px 2px at 40% 70%, hsl(0 100% 70% / 0.2) 0%, transparent 100%),
-                           radial-gradient(1px 1px at 60% 20%, hsl(280 100% 90% / 0.4) 0%, transparent 100%),
-                           radial-gradient(2px 2px at 80% 50%, hsl(320 100% 70% / 0.25) 0%, transparent 100%),
-                           radial-gradient(1px 1px at 10% 60%, hsl(280 100% 80% / 0.35) 0%, transparent 100%),
-                           radial-gradient(2px 2px at 90% 80%, hsl(280 100% 70% / 0.3) 0%, transparent 100%)`,
+          background: "linear-gradient(180deg, hsl(240 25% 2%) 0%, hsl(250 30% 4%) 50%, hsl(240 20% 6%) 100%)",
         }}
       />
 
-      {/* Floating particles */}
-      {particles.map((particle) => (
+      {/* Cyberpunk grid - perspective */}
+      <div 
+        className="absolute inset-0 opacity-[0.08]"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, hsl(185 100% 55% / 0.6) 1px, transparent 1px),
+            linear-gradient(to bottom, hsl(185 100% 55% / 0.4) 1px, transparent 1px)
+          `,
+          backgroundSize: '80px 80px',
+          transform: 'perspective(500px) rotateX(60deg)',
+          transformOrigin: 'center top',
+          height: '200%',
+          top: '40%',
+        }}
+      />
+
+      {/* Horizontal scan lines */}
+      <div 
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, hsl(185 100% 55% / 0.5) 2px, hsl(185 100% 55% / 0.5) 4px)',
+          backgroundSize: '100% 4px',
+        }}
+      />
+
+      {/* Animated neon glow waves */}
+      <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="cyanMagentaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="hsl(185 100% 55% / 0)" />
+            <stop offset="30%" stopColor="hsl(185 100% 55% / 0.8)" />
+            <stop offset="70%" stopColor="hsl(320 100% 60% / 0.8)" />
+            <stop offset="100%" stopColor="hsl(320 100% 60% / 0)" />
+          </linearGradient>
+          <filter id="neonGlow">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+        
+        {/* Top wave */}
+        <motion.path
+          d="M0,100 Q250,50 500,100 T1000,100 T1500,100 T2000,100"
+          fill="none"
+          stroke="url(#cyanMagentaGrad)"
+          strokeWidth="2"
+          filter="url(#neonGlow)"
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{ pathLength: 1, opacity: 0.6 }}
+          transition={{ duration: 3, ease: "easeInOut" }}
+        />
+        
+        {/* Bottom wave */}
+        <motion.path
+          d="M0,700 Q250,650 500,700 T1000,700 T1500,700 T2000,700"
+          fill="none"
+          stroke="url(#cyanMagentaGrad)"
+          strokeWidth="1.5"
+          filter="url(#neonGlow)"
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{ pathLength: 1, opacity: 0.4 }}
+          transition={{ duration: 3, delay: 0.5, ease: "easeInOut" }}
+        />
+      </svg>
+
+      {/* Floating cyan particles */}
+      {[...Array(15)].map((_, i) => (
         <motion.div
-          key={particle.id}
-          className="absolute rounded-full"
+          key={`cyan-${i}`}
+          className="absolute w-1 h-1 rounded-full bg-primary"
           style={{
-            left: `${particle.x}%`,
-            top: `${particle.y}%`,
-            width: particle.size,
-            height: particle.size,
-            background: particle.color === 'purple' 
-              ? `radial-gradient(circle, hsl(280 100% 70% / 0.8) 0%, hsl(280 100% 50% / 0) 70%)`
-              : `radial-gradient(circle, hsl(0 100% 60% / 0.7) 0%, hsl(0 100% 50% / 0) 70%)`,
-            boxShadow: particle.color === 'purple'
-              ? `0 0 ${particle.size * 6}px hsl(280 100% 65% / 0.5)`
-              : `0 0 ${particle.size * 6}px hsl(0 100% 55% / 0.4)`,
+            left: `${10 + (i * 6)}%`,
+            top: `${20 + Math.random() * 60}%`,
+            boxShadow: '0 0 10px hsl(185 100% 55% / 0.8), 0 0 20px hsl(185 100% 55% / 0.4)',
           }}
           animate={{
-            y: [0, -60, 0],
-            opacity: [0.2, 0.8, 0.2],
+            y: [0, -30, 0],
+            opacity: [0.3, 0.8, 0.3],
+            scale: [1, 1.5, 1],
           }}
           transition={{
-            duration: particle.duration,
+            duration: 4 + Math.random() * 2,
             repeat: Infinity,
-            delay: particle.delay,
+            delay: i * 0.3,
             ease: "easeInOut",
           }}
         />
       ))}
 
-      {/* Large floating orbs */}
-      <motion.div
-        className="absolute top-[20%] left-[15%] w-40 h-40 rounded-full"
-        style={{
-          background: "radial-gradient(circle, hsl(280 100% 55% / 0.12) 0%, transparent 70%)",
-          boxShadow: "0 0 100px hsl(280 100% 55% / 0.25)",
-        }}
-        animate={{
-          y: [0, -30, 0],
-          scale: [1, 1.15, 1],
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
+      {/* Floating magenta particles */}
+      {[...Array(10)].map((_, i) => (
+        <motion.div
+          key={`magenta-${i}`}
+          className="absolute w-1.5 h-1.5 rounded-full bg-secondary"
+          style={{
+            left: `${5 + (i * 10)}%`,
+            top: `${30 + Math.random() * 50}%`,
+            boxShadow: '0 0 15px hsl(320 100% 60% / 0.8), 0 0 30px hsl(320 100% 60% / 0.4)',
+          }}
+          animate={{
+            y: [0, 40, 0],
+            opacity: [0.2, 0.7, 0.2],
+          }}
+          transition={{
+            duration: 5 + Math.random() * 3,
+            repeat: Infinity,
+            delay: i * 0.5,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
 
+      {/* Large glowing orb - cyan */}
       <motion.div
-        className="absolute top-[50%] right-[10%] w-32 h-32 rounded-full"
+        className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full"
         style={{
-          background: "radial-gradient(circle, hsl(0 100% 50% / 0.1) 0%, transparent 70%)",
-          boxShadow: "0 0 80px hsl(0 100% 50% / 0.2)",
+          background: "radial-gradient(circle, hsl(185 100% 55% / 0.1) 0%, transparent 60%)",
+          filter: "blur(60px)",
         }}
         animate={{
-          y: [0, 40, 0],
           scale: [1, 1.2, 1],
+          opacity: [0.3, 0.5, 0.3],
         }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* Vignette effect */}
+      {/* Large glowing orb - magenta */}
+      <motion.div
+        className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full"
+        style={{
+          background: "radial-gradient(circle, hsl(320 100% 60% / 0.1) 0%, transparent 60%)",
+          filter: "blur(50px)",
+        }}
+        animate={{
+          scale: [1, 1.15, 1],
+          opacity: [0.25, 0.45, 0.25],
+        }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+      />
+
+      {/* Center arc reactor glow */}
+      <motion.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
+        style={{
+          background: "radial-gradient(circle, hsl(185 100% 55% / 0.15) 0%, hsl(320 100% 60% / 0.05) 40%, transparent 70%)",
+        }}
+        animate={{
+          scale: [1, 1.1, 1],
+          opacity: [0.4, 0.7, 0.4],
+        }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* Corner accent glows */}
+      <div 
+        className="absolute top-0 left-0 w-[300px] h-[300px]"
+        style={{
+          background: "radial-gradient(circle at top left, hsl(185 100% 55% / 0.15) 0%, transparent 70%)",
+        }}
+      />
+      <div 
+        className="absolute bottom-0 right-0 w-[300px] h-[300px]"
+        style={{
+          background: "radial-gradient(circle at bottom right, hsl(320 100% 60% / 0.15) 0%, transparent 70%)",
+        }}
+      />
+
+      {/* Vignette */}
       <div 
         className="absolute inset-0"
         style={{
-          background: "radial-gradient(ellipse 75% 70% at 50% 50%, transparent 0%, transparent 40%, rgba(10,5,18,0.8) 100%)"
+          background: "radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, hsl(240 25% 2% / 0.8) 100%)",
         }}
       />
 
-      {/* Subtle noise overlay */}
+      {/* Noise texture */}
       <div 
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.015]"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
         }}
       />
     </div>

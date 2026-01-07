@@ -10,65 +10,65 @@ html {
 
 @layer base {
   :root {
-    /* Megatron Theme - Deep Purple & Crimson Red */
-    --background: 270 30% 4%;
-    --foreground: 280 20% 95%;
+    /* Cyberpunk Neon Theme - Electric Cyan & Hot Magenta */
+    --background: 240 20% 3%;
+    --foreground: 180 20% 95%;
 
-    --card: 270 25% 8%;
-    --card-foreground: 280 20% 95%;
+    --card: 240 25% 7%;
+    --card-foreground: 180 20% 95%;
 
-    --popover: 270 25% 8%;
-    --popover-foreground: 280 20% 95%;
+    --popover: 240 25% 7%;
+    --popover-foreground: 180 20% 95%;
 
-    /* Primary Purple - Electric Violet */
-    --primary: 280 100% 65%;
-    --primary-foreground: 270 30% 4%;
+    /* Primary - Electric Cyan */
+    --primary: 185 100% 55%;
+    --primary-foreground: 240 20% 3%;
 
-    /* Secondary Crimson Red */
-    --secondary: 0 100% 55%;
-    --secondary-foreground: 270 30% 4%;
+    /* Secondary - Hot Magenta/Pink */
+    --secondary: 320 100% 60%;
+    --secondary-foreground: 240 20% 3%;
 
-    /* Muted Dark Purple */
-    --muted: 270 20% 15%;
-    --muted-foreground: 280 15% 55%;
+    /* Muted Dark Blue */
+    --muted: 240 20% 12%;
+    --muted-foreground: 200 15% 55%;
 
-    /* Accent Magenta */
-    --accent: 320 100% 55%;
-    --accent-foreground: 270 30% 4%;
+    /* Accent - Neon Yellow */
+    --accent: 55 100% 55%;
+    --accent-foreground: 240 20% 3%;
 
     --destructive: 0 85% 55%;
-    --destructive-foreground: 280 20% 95%;
+    --destructive-foreground: 180 20% 95%;
 
-    --border: 270 20% 18%;
-    --input: 270 20% 18%;
-    --ring: 280 100% 65%;
+    --border: 240 25% 15%;
+    --input: 240 25% 15%;
+    --ring: 185 100% 55%;
 
     --radius: 0.5rem;
 
-    /* Megatron gradients */
-    --gradient-hero: linear-gradient(180deg, hsl(270 35% 3%) 0%, hsl(280 30% 5%) 50%, hsl(290 25% 8%) 100%);
-    --gradient-card: linear-gradient(135deg, hsl(270 25% 12%) 0%, hsl(280 20% 6%) 100%);
-    --gradient-text: linear-gradient(90deg, hsl(280 100% 70%) 0%, hsl(320 100% 60%) 50%, hsl(0 100% 60%) 100%);
-    --gradient-neon: linear-gradient(135deg, hsl(280 100% 65%) 0%, hsl(320 100% 55%) 50%, hsl(0 100% 55%) 100%);
-    --gradient-hud: linear-gradient(180deg, hsl(280 100% 65% / 0.1) 0%, transparent 50%, hsl(0 100% 55% / 0.05) 100%);
+    /* Cyberpunk gradients */
+    --gradient-hero: linear-gradient(180deg, hsl(240 25% 2%) 0%, hsl(250 30% 5%) 50%, hsl(240 20% 7%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(240 25% 10%) 0%, hsl(250 20% 5%) 100%);
+    --gradient-text: linear-gradient(90deg, hsl(185 100% 60%) 0%, hsl(280 100% 65%) 50%, hsl(320 100% 65%) 100%);
+    --gradient-neon: linear-gradient(135deg, hsl(185 100% 55%) 0%, hsl(320 100% 60%) 100%);
+    --gradient-hud: linear-gradient(180deg, hsl(185 100% 55% / 0.1) 0%, transparent 50%, hsl(320 100% 60% / 0.05) 100%);
     --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.08) 0%, hsl(0 0% 100% / 0.02) 100%);
-    --glow-primary: 0 0 40px hsl(280 100% 65% / 0.5), 0 0 80px hsl(280 100% 65% / 0.25);
-    --glow-accent: 0 0 50px hsl(0 100% 55% / 0.4);
-    --glow-neon: 0 0 30px hsl(280 100% 65% / 0.5), 0 0 60px hsl(0 100% 55% / 0.3);
+    --glow-primary: 0 0 40px hsl(185 100% 55% / 0.5), 0 0 80px hsl(185 100% 55% / 0.25);
+    --glow-accent: 0 0 50px hsl(320 100% 60% / 0.4);
+    --glow-neon: 0 0 30px hsl(185 100% 55% / 0.5), 0 0 60px hsl(320 100% 60% / 0.3);
 
-    /* Megatron fonts */
-    --font-display: 'Audiowide', 'Exo 2', sans-serif;
-    --font-body: 'Rajdhani', 'Exo 2', sans-serif;
-    --font-mono: 'Exo 2', monospace;
+    /* Cyberpunk fonts */
+    --font-display: 'Orbitron', 'Audiowide', sans-serif;
+    --font-body: 'Rajdhani', 'Space Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
-    --sidebar-background: 270 25% 5%;
-    --sidebar-foreground: 280 20% 95%;
-    --sidebar-primary: 280 100% 65%;
-    --sidebar-primary-foreground: 270 30% 4%;
-    --sidebar-accent: 270 20% 15%;
-    --sidebar-accent-foreground: 280 20% 95%;
-    --sidebar-border: 270 20% 18%;
-    --sidebar-ring: 280 100% 65%;
+    --sidebar-background: 240 25% 4%;
+    --sidebar-foreground: 180 20% 95%;
+    --sidebar-primary: 185 100% 55%;
+    --sidebar-primary-foreground: 240 20% 3%;
+    --sidebar-accent: 240 20% 12%;
+    --sidebar-accent-foreground: 180 20% 95%;
+    --sidebar-border: 240 25% 15%;
+    --sidebar-ring: 185 100% 55%;
   }
 }
 
