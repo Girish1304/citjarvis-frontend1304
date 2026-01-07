@@ -189,5 +189,59 @@ export const useArcReactorSounds = () => {
     };
   }, [getAudioContext]);
 
-  return { playClickSound, playBootSound, playAmbientHum };
+  // Metallic clang sound for arc reactor
+  const playMetalSound = useCallback(() => {
+    const ctx = getAudioContext();
+    const now = ctx.currentTime;
+
+    // Main metallic impact
+    const metalOsc = ctx.createOscillator();
+    const metalGain = ctx.createGain();
+    const metalFilter = ctx.createBiquadFilter();
+    
+    metalOsc.type = 'triangle';
+    metalOsc.frequency.setValueAtTime(800, now);
+    metalOsc.frequency.exponentialRampToValueAtTime(200, now + 0.15);
+    
+    metalFilter.type = 'bandpass';
+    metalFilter.frequency.setValueAtTime(1500, now);
+    metalFilter.Q.setValueAtTime(8, now);
+    
+    metalGain.gain.setValueAtTime(0.5, now);
+    metalGain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+    
+    metalOsc.connect(metalFilter);
+    metalFilter.connect(metalGain);
+    metalGain.connect(ctx.destination);
+    metalOsc.start(now);
+    metalOsc.stop(now + 0.35);
+
+    // High frequency shimmer
+    const shimmerOsc = ctx.createOscillator();
+    const shimmerGain = ctx.createGain();
+    shimmerOsc.type = 'sine';
+    shimmerOsc.frequency.setValueAtTime(3000, now);
+    shimmerOsc.frequency.exponentialRampToValueAtTime(1500, now + 0.2);
+    shimmerGain.gain.setValueAtTime(0.15, now);
+    shimmerGain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
+    shimmerOsc.connect(shimmerGain);
+    shimmerGain.connect(ctx.destination);
+    shimmerOsc.start(now);
+    shimmerOsc.stop(now + 0.3);
+
+    // Low resonant thud
+    const thudOsc = ctx.createOscillator();
+    const thudGain = ctx.createGain();
+    thudOsc.type = 'sine';
+    thudOsc.frequency.setValueAtTime(100, now);
+    thudOsc.frequency.exponentialRampToValueAtTime(40, now + 0.2);
+    thudGain.gain.setValueAtTime(0.4, now);
+    thudGain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
+    thudOsc.connect(thudGain);
+    thudGain.connect(ctx.destination);
+    thudOsc.start(now);
+    thudOsc.stop(now + 0.3);
+  }, [getAudioContext]);
+
+  return { playClickSound, playBootSound, playAmbientHum, playMetalSound };
 };
