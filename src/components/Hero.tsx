@@ -26,7 +26,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-6"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-6 font-[Orbitron]"
           >
             <span className="text-foreground">JARVIS</span>
             <span className="text-gradient"> 2026</span>
