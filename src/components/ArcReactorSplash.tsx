@@ -11,7 +11,7 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
   const [clickCount, setClickCount] = useState(0);
   const [isBooting, setIsBooting] = useState(false);
   const [currentLine, setCurrentLine] = useState("");
-  const { playClickSound, playBootSound, playAmbientHum } = useArcReactorSounds();
+  const { playClickSound, playBootSound, playAmbientHum, playMetalSound } = useArcReactorSounds();
   const { speakLine, getLineForClick, preloadAll } = useJarvisVoice();
   const hasStartedRef = useRef(false);
 
@@ -35,6 +35,7 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
     
     setClickCount(newCount);
     playClickSound(newCount);
+    playMetalSound();
 
     // Get and speak the JARVIS line
     const line = getLineForClick(newCount);
@@ -518,10 +519,10 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
 
         {/* Corner HUD elements */}
         <div className="absolute top-6 left-6 text-cyan-400/25 text-xs font-mono tracking-widest">
-          STARK INDUSTRIES
+          JARVIS 2026
         </div>
         <div className="absolute top-6 right-6 text-cyan-400/25 text-xs font-mono tracking-widest">
-          MK VII
+          MK X
         </div>
         <div className="absolute bottom-6 left-6 text-cyan-400/25 text-xs font-mono tracking-widest">
           NEW ELEMENT CORE
