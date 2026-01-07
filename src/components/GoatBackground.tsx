@@ -9,7 +9,7 @@ const GoatBackground = () => {
         className="absolute inset-0"
         style={{
           backgroundImage: `
-            linear-gradient(to right, hsl(var(--primary) / 0.06) 1px, transparent 1px)
+            linear-gradient(to right, hsl(var(--primary) / 0.15) 1px, transparent 1px)
           `,
           backgroundSize: '80px 100%',
         }}
@@ -17,10 +17,10 @@ const GoatBackground = () => {
 
       {/* Secondary vertical lines (finer) */}
       <div 
-        className="absolute inset-0 opacity-40"
+        className="absolute inset-0"
         style={{
           backgroundImage: `
-            linear-gradient(to right, hsl(var(--primary) / 0.03) 1px, transparent 1px)
+            linear-gradient(to right, hsl(var(--primary) / 0.08) 1px, transparent 1px)
           `,
           backgroundSize: '20px 100%',
         }}
