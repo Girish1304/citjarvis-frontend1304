@@ -133,38 +133,53 @@ const Workshops = () => {
   };
 
   return (
-    <section id="workshops" className="py-28 relative overflow-hidden">
-      {/* Simplified background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/3 to-background" />
+    <section id="workshops" className="py-32 relative overflow-hidden bg-background">
+      {/* Premium grid background */}
+      <div className="absolute inset-0">
+        <div 
+          className="absolute inset-0 opacity-40"
+          style={{
+            backgroundImage: `linear-gradient(to right, hsl(var(--primary) / 0.08) 1px, transparent 1px)`,
+            backgroundSize: '80px 100%',
+          }}
+        />
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(ellipse at center top, hsl(var(--primary) / 0.06) 0%, transparent 60%)",
+          }}
+        />
+      </div>
       
       <div className="container px-6 relative" ref={ref}>
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-4xl mx-auto mb-20"
         >
-          <motion.div 
-            className="inline-flex items-center gap-3 px-5 py-2 bg-card/60 border border-secondary/30 backdrop-blur-sm mb-6"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          <motion.span 
+            className="inline-block text-primary font-mono text-sm uppercase tracking-[0.3em] mb-6"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 0.2 }}
           >
-            <div className="w-2 h-2 bg-secondary" />
-            <span className="text-secondary font-mono text-sm uppercase tracking-[0.2em]">Workshops</span>
-            <Wrench className="w-4 h-4 text-secondary/60" />
-          </motion.div>
+            [ HANDS-ON TRAINING ]
+          </motion.span>
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6 tracking-tight">
-            LEARN & <span className="text-gold">MASTER</span>
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
+            <span className="text-foreground">MASTER THE</span>
+            <br />
+            <span className="text-gradient">FUTURE</span>
           </h2>
-          <p className="text-lg text-muted-foreground tracking-wide">
-            6 intensive hands-on workshops to upgrade your skills with industry experts.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            6 intensive workshops designed to give you practical skills with industry-standard tools and technologies.
           </p>
         </motion.div>
 
-        {/* Workshops Grid - increased gap */}
-        <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+        {/* Workshops Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {workshops.map((workshop, index) => (
             <motion.div
               key={workshop.id}
@@ -173,55 +188,61 @@ const Workshops = () => {
               transition={{ duration: 0.5, delay: 0.08 * index }}
               className="group relative"
             >
-              <div className="relative bg-card/50 border border-secondary/20 backdrop-blur-sm overflow-hidden h-full group-hover:border-secondary/40 transition-all duration-300">
-                {/* Workshop Image - simplified */}
-                <div className="relative w-full h-48 overflow-hidden">
+              <div className="relative bg-card border border-border hover:border-primary/50 transition-all duration-500 overflow-hidden h-full">
+                {/* Gold accent line */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                {/* Workshop Image */}
+                <div className="relative w-full h-44 overflow-hidden">
                   <img 
                     src={workshop.image} 
                     alt={workshop.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/80 to-transparent" />
+                  
                   {/* Workshop number badge */}
-                  <div className="absolute top-3 left-3 px-3 py-1.5 bg-secondary text-secondary-foreground text-xs font-bold font-mono tracking-wider">
+                  <div className="absolute top-4 left-4 px-3 py-1 bg-primary text-primary-foreground text-xs font-bold font-mono">
                     W{String(workshop.id).padStart(2, '0')}
+                  </div>
+                  
+                  {/* Price badge */}
+                  <div className="absolute top-4 right-4 px-3 py-1 bg-background/90 backdrop-blur-sm border border-primary/30 text-primary text-sm font-bold font-mono">
+                    {workshop.price}
                   </div>
                 </div>
 
                 {/* Workshop Content */}
                 <div className="p-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 border border-secondary/40 flex items-center justify-center bg-secondary/5 group-hover:bg-secondary/10 transition-colors">
-                      <workshop.icon className="w-5 h-5 text-secondary" />
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 border border-primary/30 flex items-center justify-center bg-primary/5 group-hover:bg-primary/10 group-hover:border-primary/50 transition-all duration-300">
+                      <workshop.icon className="w-5 h-5 text-primary" />
                     </div>
-                    <h3 className="text-lg md:text-xl font-bold tracking-wide group-hover:text-secondary transition-colors">
+                    <h3 className="text-base font-bold tracking-wide text-foreground group-hover:text-primary transition-colors duration-300">
                       {workshop.name}
                     </h3>
                   </div>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                  
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-5">
                     {workshop.description}
                   </p>
                   
                   {/* Workshop meta info */}
-                  <div className="flex flex-wrap gap-2 text-xs mb-4">
-                    <div className="flex items-center gap-1.5 text-muted-foreground px-2.5 py-1.5 bg-muted/30 border border-border/50">
-                      <Clock className="w-3 h-3 text-secondary" />
+                  <div className="flex flex-wrap gap-3 mb-5">
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <Clock className="w-3.5 h-3.5 text-primary/70" />
                       <span className="font-mono">{workshop.duration}</span>
                     </div>
-                    <div className="flex items-center gap-1.5 text-muted-foreground px-2.5 py-1.5 bg-muted/30 border border-border/50">
-                      <Users className="w-3 h-3 text-secondary" />
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <Users className="w-3.5 h-3.5 text-primary/70" />
                       <span className="font-mono">{workshop.capacity}</span>
-                    </div>
-                    <div className="flex items-center gap-1.5 text-secondary font-semibold px-2.5 py-1.5 bg-secondary/10 border border-secondary/30">
-                      <IndianRupee className="w-3 h-3" />
-                      <span className="font-mono">{workshop.price}</span>
                     </div>
                   </div>
 
                   {/* Topics Toggle */}
                   <button
                     onClick={() => toggleExpand(workshop.id)}
-                    className="flex items-center gap-2 text-sm text-secondary hover:text-secondary/80 transition-colors mb-4"
+                    className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors mb-4 w-full"
                   >
                     <span className="font-mono uppercase tracking-wider text-xs">
                       {expandedId === workshop.id ? "Hide Topics" : "View Topics"}
@@ -244,20 +265,17 @@ const Workshops = () => {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <div className="pb-4 border-b border-secondary/20 mb-4">
-                          <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-2 font-mono">
-                            Topics Covered
-                          </h4>
-                          <ul className="space-y-1.5">
+                        <div className="pb-4 border-t border-border pt-4 mb-4">
+                          <ul className="space-y-2">
                             {workshop.topics.map((topic, topicIndex) => (
                               <motion.li
                                 key={topicIndex}
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: topicIndex * 0.05 }}
-                                className="flex items-start gap-2 text-xs text-muted-foreground"
+                                className="flex items-start gap-3 text-sm text-muted-foreground"
                               >
-                                <div className="w-1 h-1 bg-secondary mt-1.5 flex-shrink-0" />
+                                <div className="w-1.5 h-1.5 bg-primary mt-2 flex-shrink-0" />
                                 <span>{topic}</span>
                               </motion.li>
                             ))}
@@ -268,11 +286,11 @@ const Workshops = () => {
                   </AnimatePresence>
 
                   {/* Registration Button */}
-                  <Link to="/register">
-                    <Button variant="glass" size="default" className="w-full border-secondary/30 hover:border-secondary hover:bg-secondary/10 group/btn">
-                      REGISTER FOR WORKSHOP
+                  <Link to="/register" className="block">
+                    <button className="w-full py-3 bg-transparent border border-primary/50 text-primary font-bold text-sm uppercase tracking-wider hover:bg-primary hover:text-primary-foreground transition-all duration-300 flex items-center justify-center gap-2 group/btn">
+                      <span>Register Now</span>
                       <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                    </Button>
+                    </button>
                   </Link>
                 </div>
               </div>
