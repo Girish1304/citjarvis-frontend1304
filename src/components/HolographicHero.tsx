@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Zap, Cpu, CircuitBoard, Wrench } from "lucide-react";
 import CountdownTimer from "@/components/CountdownTimer";
+import HolographicLogo3D from "@/components/HolographicLogo3D";
 
 // Glassy text style for unified cyan theme
 const glassyTextStyle = {
@@ -58,7 +59,17 @@ const HolographicHero = () => {
             </div>
           </motion.div>
 
-          {/* Main heading - Glassy Hero title */}
+          {/* 3D Holographic Logo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.15, duration: 0.8 }}
+            className="mb-6"
+          >
+            <HolographicLogo3D />
+          </motion.div>
+
+          {/* Main heading - Glassy Hero title with Audiowide font */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -66,14 +77,15 @@ const HolographicHero = () => {
             className="mb-4"
           >
             <h1 
-              className="font-hero text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-[0.05em] leading-none"
+              className="font-ultra text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-normal tracking-[0.15em] leading-none"
               style={{
                 color: 'hsl(180, 100%, 75%)',
                 textShadow: `
                   0 0 20px hsl(180, 100%, 50%, 0.9),
                   0 0 40px hsl(180, 100%, 50%, 0.6),
                   0 0 60px hsl(180, 100%, 50%, 0.4),
-                  0 0 100px hsl(180, 100%, 50%, 0.3)
+                  0 0 100px hsl(180, 100%, 50%, 0.3),
+                  0 0 150px hsl(180, 100%, 50%, 0.2)
                 `,
                 WebkitTextStroke: '1px hsl(180, 100%, 80%, 0.5)',
               }}
@@ -89,7 +101,7 @@ const HolographicHero = () => {
             className="mb-8"
           >
             <h2 
-              className="font-hero text-4xl sm:text-5xl md:text-6xl font-medium tracking-[0.3em]"
+              className="font-tech text-4xl sm:text-5xl md:text-6xl font-semibold tracking-[0.4em]"
               style={{
                 color: 'hsl(180, 100%, 65%)',
                 textShadow: `
