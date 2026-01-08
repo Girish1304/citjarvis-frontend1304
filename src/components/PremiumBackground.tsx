@@ -1,63 +1,94 @@
+import { motion } from "framer-motion";
+
 const PremiumBackground = () => {
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden">
-      {/* Pure black base */}
-      <div className="absolute inset-0 bg-background" />
+    <div className="fixed inset-0 -z-10 overflow-hidden bg-[hsl(220,20%,4%)]">
+      {/* Animated neon glow orbs */}
+      <motion.div 
+        className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full"
+        style={{
+          background: "radial-gradient(circle, hsl(170 100% 50% / 0.15) 0%, transparent 70%)",
+          filter: "blur(60px)",
+        }}
+        animate={{
+          x: [0, 50, 0],
+          y: [0, -30, 0],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+      
+      <motion.div 
+        className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full"
+        style={{
+          background: "radial-gradient(circle, hsl(32 100% 50% / 0.1) 0%, transparent 70%)",
+          filter: "blur(60px)",
+        }}
+        animate={{
+          x: [0, -40, 0],
+          y: [0, 40, 0],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
 
-      {/* Vertical grid lines - GoatFundedTrader signature */}
+      {/* Neon lines */}
+      <div className="absolute top-0 left-[10%] w-[2px] h-full bg-gradient-to-b from-transparent via-[hsl(170,100%,50%,0.3)] to-transparent" />
+      <div className="absolute top-0 right-[15%] w-[1px] h-full bg-gradient-to-b from-transparent via-[hsl(32,100%,50%,0.2)] to-transparent" />
+      
+      {/* Diagonal neon accents */}
+      <motion.div 
+        className="absolute top-[20%] right-[5%] w-[200px] h-[2px] origin-right"
+        style={{
+          background: "linear-gradient(90deg, transparent, hsl(120 100% 50% / 0.6))",
+          transform: "rotate(-45deg)",
+        }}
+        animate={{ opacity: [0.3, 0.8, 0.3] }}
+        transition={{ duration: 3, repeat: Infinity }}
+      />
+      <motion.div 
+        className="absolute top-[30%] right-[8%] w-[150px] h-[2px] origin-right"
+        style={{
+          background: "linear-gradient(90deg, transparent, hsl(32 100% 50% / 0.6))",
+          transform: "rotate(-45deg)",
+        }}
+        animate={{ opacity: [0.5, 1, 0.5] }}
+        transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
+      />
+      
+      <motion.div 
+        className="absolute bottom-[25%] left-[5%] w-[180px] h-[2px] origin-left"
+        style={{
+          background: "linear-gradient(90deg, hsl(170 100% 50% / 0.6), transparent)",
+          transform: "rotate(45deg)",
+        }}
+        animate={{ opacity: [0.4, 0.9, 0.4] }}
+        transition={{ duration: 3.5, repeat: Infinity }}
+      />
+
+      {/* Grid pattern */}
+      <div 
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage: `
+            linear-gradient(hsl(170 100% 50% / 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, hsl(170 100% 50% / 0.05) 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px',
+        }}
+      />
+
+      {/* Vignette */}
       <div 
         className="absolute inset-0"
         style={{
-          backgroundImage: `
-            linear-gradient(to right, hsl(var(--primary) / 0.12) 1px, transparent 1px)
-          `,
-          backgroundSize: '80px 100%',
-        }}
-      />
-
-      {/* Secondary vertical lines (finer) */}
-      <div 
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, hsl(var(--primary) / 0.05) 1px, transparent 1px)
-          `,
-          backgroundSize: '20px 100%',
-        }}
-      />
-
-      {/* Very subtle horizontal lines */}
-      <div 
-        className="absolute inset-0 opacity-30"
-        style={{
-          backgroundImage: `
-            linear-gradient(to bottom, hsl(0 0% 100% / 0.02) 1px, transparent 1px)
-          `,
-          backgroundSize: '100% 120px',
-        }}
-      />
-
-      {/* Subtle gold glow at top */}
-      <div 
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px]"
-        style={{
-          background: "radial-gradient(ellipse at center top, hsl(var(--primary) / 0.08) 0%, transparent 70%)",
-        }}
-      />
-
-      {/* Corner accents */}
-      <div 
-        className="absolute top-0 right-0 w-[600px] h-[600px]"
-        style={{
-          background: "radial-gradient(circle at top right, hsl(var(--primary) / 0.05) 0%, transparent 50%)",
-        }}
-      />
-
-      {/* Bottom gradient fade */}
-      <div 
-        className="absolute inset-x-0 bottom-0 h-64"
-        style={{
-          background: "linear-gradient(to top, hsl(var(--background)) 0%, transparent 100%)"
+          background: "radial-gradient(ellipse at center, transparent 0%, hsl(220 20% 4%) 80%)",
         }}
       />
     </div>

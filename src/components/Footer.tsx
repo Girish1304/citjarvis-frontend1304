@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Instagram, Twitter, Linkedin, Youtube, Mail, MapPin, ArrowRight } from "lucide-react";
+import { Instagram, Twitter, Linkedin, Youtube, Mail, MapPin } from "lucide-react";
 
 const Footer = () => {
   const socialLinks = [
@@ -10,7 +10,7 @@ const Footer = () => {
   ];
 
   const quickLinks = [
-    { name: "About", href: "/#about" },
+    { name: "Home", href: "/" },
     { name: "Events", href: "/events" },
     { name: "Workshops", href: "/workshops" },
     { name: "Register", href: "/register" },
@@ -24,13 +24,13 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative pt-20 pb-8 border-t border-border bg-card/50">
-      <div className="container px-6">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+    <footer className="relative pt-16 pb-8 border-t border-border bg-card/30">
+      <div className="container px-4 md:px-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="lg:col-span-1">
             <h3 className="text-2xl font-display font-bold mb-4 uppercase">
-              JARVIS <span className="text-primary">2026</span>
+              JARVIS <span className="text-[hsl(32,100%,50%)]">2026</span>
             </h3>
             <p className="text-muted-foreground text-sm mb-6 leading-relaxed max-w-xs">
               The premier technical symposium bringing together innovators, 
@@ -41,7 +41,7 @@ const Footer = () => {
                 <a
                   key={social.label}
                   href={social.href}
-                  className="w-10 h-10 rounded-lg bg-muted border border-border flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-200"
+                  className="w-10 h-10 rounded-full bg-muted border border-border flex items-center justify-center text-muted-foreground hover:bg-[hsl(170,100%,50%)] hover:text-black hover:border-[hsl(170,100%,50%)] transition-all duration-200"
                   aria-label={social.label}
                 >
                   <social.icon className="w-4 h-4" />
@@ -58,23 +58,12 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  {link.href.startsWith("/#") ? (
-                    <a
-                      href={link.href}
-                      className="text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-1 group"
-                    >
-                      {link.name}
-                      <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </a>
-                  ) : (
-                    <Link
-                      to={link.href}
-                      className="text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-1 group"
-                    >
-                      {link.name}
-                      <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </Link>
-                  )}
+                  <Link
+                    to={link.href}
+                    className="text-muted-foreground hover:text-[hsl(170,100%,50%)] transition-colors text-sm"
+                  >
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -90,10 +79,9 @@ const Footer = () => {
                 <li key={event.name}>
                   <Link
                     to={event.href}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-1 group"
+                    className="text-muted-foreground hover:text-[hsl(170,100%,50%)] transition-colors text-sm"
                   >
                     {event.name}
-                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </Link>
                 </li>
               ))}
@@ -109,16 +97,16 @@ const Footer = () => {
               <li>
                 <a
                   href="mailto:jarvis@citchennai.edu"
-                  className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors text-sm group"
+                  className="flex items-center gap-3 text-muted-foreground hover:text-[hsl(170,100%,50%)] transition-colors text-sm"
                 >
-                  <div className="w-9 h-9 rounded-lg bg-muted border border-border flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-colors">
+                  <div className="w-9 h-9 rounded-full bg-muted border border-border flex items-center justify-center">
                     <Mail className="w-4 h-4" />
                   </div>
                   jarvis@citchennai.edu
                 </a>
               </li>
               <li className="flex items-start gap-3 text-muted-foreground text-sm">
-                <div className="w-9 h-9 rounded-lg bg-muted border border-border flex items-center justify-center flex-shrink-0">
+                <div className="w-9 h-9 rounded-full bg-muted border border-border flex items-center justify-center flex-shrink-0">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <span className="pt-2">
@@ -136,8 +124,8 @@ const Footer = () => {
             © 2026 JARVIS. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-muted-foreground">
-            <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-[hsl(170,100%,50%)] transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-[hsl(170,100%,50%)] transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>
