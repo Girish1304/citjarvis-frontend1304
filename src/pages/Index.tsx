@@ -7,7 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScanLineOverlay from "@/components/ScanLineOverlay";
 import ArcReactorSplash from "@/components/ArcReactorSplash";
-import PremiumBackground from "@/components/PremiumBackground";
+import KikkBackground from "@/components/KikkBackground";
 import HolographicHero from "@/components/HolographicHero";
 
 const navButtons = [
@@ -48,7 +48,7 @@ const Index = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <PremiumBackground />
+            <KikkBackground />
             <ScanLineOverlay />
             <Navbar />
             

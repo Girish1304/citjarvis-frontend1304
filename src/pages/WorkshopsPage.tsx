@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Workshops from "@/components/Workshops";
 import Footer from "@/components/Footer";
 import ScanLineOverlay from "@/components/ScanLineOverlay";
+import KikkBackground from "@/components/KikkBackground";
 
 const WorkshopsPage = () => {
   return (
@@ -16,9 +17,10 @@ const WorkshopsPage = () => {
       </Helmet>
       
       <div className="min-h-screen bg-background relative">
+        <KikkBackground />
         <ScanLineOverlay />
         <Navbar />
-        <main className="pt-24">
+        <main className="pt-24 relative z-10">
           <Workshops />
         </main>
         <Footer />
