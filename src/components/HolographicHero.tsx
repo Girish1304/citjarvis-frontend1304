@@ -1,8 +1,17 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Zap, Cpu, CircuitBoard, Wrench, Calendar, MapPin } from "lucide-react";
+import { ArrowRight, Zap, Cpu, CircuitBoard, Wrench } from "lucide-react";
 import CountdownTimer from "@/components/CountdownTimer";
-import jarvisLogo from "@/assets/jarvis-logo.png";
+
+// Glassy text style for unified cyan theme
+const glassyTextStyle = {
+  color: 'hsl(180, 100%, 70%)',
+  textShadow: `
+    0 0 10px hsl(180, 100%, 50%, 0.8),
+    0 0 20px hsl(180, 100%, 50%, 0.5),
+    0 0 40px hsl(180, 100%, 50%, 0.3)
+  `,
+};
 
 const HolographicHero = () => {
   const stats = [
@@ -17,42 +26,59 @@ const HolographicHero = () => {
       <div className="max-w-6xl mx-auto w-full relative z-10">
         {/* Main content */}
         <div className="text-center">
-          {/* Date badge - styled like reference */}
+          {/* Date badge - glassy style */}
           <motion.div 
             className="inline-flex items-center justify-center mb-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
           >
-            <div className="relative flex items-center gap-4 px-8 py-3 bg-[hsl(220,25%,8%,0.8)] border border-[hsl(170,100%,50%,0.4)] rounded-full backdrop-blur-sm">
+            <div 
+              className="relative flex items-center gap-4 px-8 py-3 rounded-full backdrop-blur-xl"
+              style={{
+                background: 'linear-gradient(135deg, hsl(180, 100%, 50%, 0.1), hsl(180, 100%, 50%, 0.05))',
+                border: '1px solid hsl(180, 100%, 50%, 0.3)',
+                boxShadow: '0 0 30px hsl(180, 100%, 50%, 0.2), inset 0 0 20px hsl(180, 100%, 50%, 0.05)',
+              }}
+            >
               {/* Corner glow effects */}
-              <div className="absolute -top-0.5 -left-0.5 w-3 h-3 border-t-2 border-l-2 border-[hsl(170,100%,50%)] rounded-tl-lg" />
-              <div className="absolute -top-0.5 -right-0.5 w-3 h-3 border-t-2 border-r-2 border-[hsl(170,100%,50%)] rounded-tr-lg" />
-              <div className="absolute -bottom-0.5 -left-0.5 w-3 h-3 border-b-2 border-l-2 border-[hsl(170,100%,50%)] rounded-bl-lg" />
-              <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 border-b-2 border-r-2 border-[hsl(170,100%,50%)] rounded-br-lg" />
+              <div className="absolute -top-0.5 -left-0.5 w-3 h-3 border-t-2 border-l-2 border-[hsl(180,100%,50%)] rounded-tl-lg" />
+              <div className="absolute -top-0.5 -right-0.5 w-3 h-3 border-t-2 border-r-2 border-[hsl(180,100%,50%)] rounded-tr-lg" />
+              <div className="absolute -bottom-0.5 -left-0.5 w-3 h-3 border-b-2 border-l-2 border-[hsl(180,100%,50%)] rounded-bl-lg" />
+              <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 border-b-2 border-r-2 border-[hsl(180,100%,50%)] rounded-br-lg" />
               
-              <Zap className="w-4 h-4 text-[hsl(170,100%,50%)]" />
-              <span className="font-hero text-sm md:text-base font-semibold text-[hsl(170,100%,50%)] tracking-[0.2em] uppercase">
+              <Zap className="w-4 h-4" style={{ color: 'hsl(180, 100%, 50%)', filter: 'drop-shadow(0 0 5px hsl(180, 100%, 50%))' }} />
+              <span 
+                className="font-hero text-sm md:text-base font-semibold tracking-[0.2em] uppercase"
+                style={glassyTextStyle}
+              >
                 February 4, 2026
               </span>
-              <Zap className="w-4 h-4 text-[hsl(170,100%,50%)]" />
+              <Zap className="w-4 h-4" style={{ color: 'hsl(180, 100%, 50%)', filter: 'drop-shadow(0 0 5px hsl(180, 100%, 50%))' }} />
             </div>
           </motion.div>
 
-          {/* Main heading - Hero title with gradient */}
+          {/* Main heading - Glassy Hero title */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
             className="mb-4"
           >
-            <h1 className="font-hero text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-[0.05em] leading-none">
-              <span 
-                className="block bg-gradient-to-r from-[hsl(170,100%,50%)] via-[hsl(280,100%,60%)] to-[hsl(320,100%,60%)] bg-clip-text text-transparent drop-shadow-[0_0_60px_hsl(280,100%,50%,0.4)]"
-                style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
-              >
-                JARVIS
-              </span>
+            <h1 
+              className="font-hero text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-[0.05em] leading-none"
+              style={{
+                color: 'hsl(180, 100%, 75%)',
+                textShadow: `
+                  0 0 20px hsl(180, 100%, 50%, 0.9),
+                  0 0 40px hsl(180, 100%, 50%, 0.6),
+                  0 0 60px hsl(180, 100%, 50%, 0.4),
+                  0 0 100px hsl(180, 100%, 50%, 0.3)
+                `,
+                WebkitTextStroke: '1px hsl(180, 100%, 80%, 0.5)',
+              }}
+            >
+              JARVIS
             </h1>
           </motion.div>
 
@@ -62,24 +88,39 @@ const HolographicHero = () => {
             transition={{ delay: 0.3, duration: 0.5 }}
             className="mb-8"
           >
-            <h2 className="font-hero text-4xl sm:text-5xl md:text-6xl font-medium tracking-[0.3em] text-foreground/90">
+            <h2 
+              className="font-hero text-4xl sm:text-5xl md:text-6xl font-medium tracking-[0.3em]"
+              style={{
+                color: 'hsl(180, 100%, 65%)',
+                textShadow: `
+                  0 0 15px hsl(180, 100%, 50%, 0.7),
+                  0 0 30px hsl(180, 100%, 50%, 0.4)
+                `,
+              }}
+            >
               2 0 2 6
             </h2>
           </motion.div>
 
-          {/* Subtitle with highlighted text */}
+          {/* Subtitle with glassy text */}
           <motion.div 
             className="max-w-2xl mx-auto mb-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <p className="font-heading text-lg md:text-xl text-muted-foreground leading-relaxed">
+            <p 
+              className="font-heading text-lg md:text-xl leading-relaxed"
+              style={{
+                color: 'hsl(180, 50%, 75%)',
+                textShadow: '0 0 10px hsl(180, 100%, 50%, 0.3)',
+              }}
+            >
               The ultimate technical symposium at{" "}
-              <span className="text-[hsl(170,100%,50%)] font-semibold">Chennai Institute of Technology</span>.
-              <span className="text-[hsl(320,100%,60%)]">Where innovation</span>{" "}
-              meets{" "}
-              <span className="text-[hsl(32,100%,50%)]">inspiration</span>.
+              <span style={{ ...glassyTextStyle, fontWeight: 600 }}>
+                Chennai Institute of Technology
+              </span>.{" "}
+              Where innovation meets inspiration.
             </p>
           </motion.div>
 
@@ -93,7 +134,7 @@ const HolographicHero = () => {
             <CountdownTimer />
           </motion.div>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - Glassy style */}
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
             initial={{ opacity: 0, y: 20 }}
@@ -101,19 +142,49 @@ const HolographicHero = () => {
             transition={{ delay: 0.6 }}
           >
             <Link to="/register">
-              <button className="group px-10 py-4 text-sm font-bold uppercase tracking-[0.15em] bg-gradient-to-r from-[hsl(170,100%,50%)] to-[hsl(190,100%,50%)] hover:from-[hsl(170,100%,55%)] hover:to-[hsl(190,100%,55%)] text-black rounded-md transition-all duration-300 shadow-[0_0_30px_hsl(170,100%,50%,0.4)] hover:shadow-[0_0_50px_hsl(170,100%,50%,0.6)] flex items-center gap-3 font-heading">
+              <motion.button 
+                className="group px-10 py-4 text-sm font-bold uppercase tracking-[0.15em] rounded-lg flex items-center gap-3 font-heading relative overflow-hidden"
+                style={{
+                  background: 'linear-gradient(135deg, hsl(180, 100%, 50%, 0.9), hsl(190, 100%, 45%, 0.9))',
+                  color: 'hsl(220, 25%, 5%)',
+                  boxShadow: `
+                    0 0 30px hsl(180, 100%, 50%, 0.5),
+                    0 0 60px hsl(180, 100%, 50%, 0.3),
+                    inset 0 1px 0 hsl(180, 100%, 80%, 0.5)
+                  `,
+                }}
+                whileHover={{ 
+                  scale: 1.02,
+                  boxShadow: '0 0 50px hsl(180, 100%, 50%, 0.7), 0 0 100px hsl(180, 100%, 50%, 0.4), inset 0 1px 0 hsl(180, 100%, 80%, 0.5)'
+                }}
+                whileTap={{ scale: 0.98 }}
+              >
                 <span>Register Now</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
+              </motion.button>
             </Link>
             <Link to="/events">
-              <button className="px-10 py-4 text-sm font-bold uppercase tracking-[0.15em] rounded-md border-2 border-[hsl(320,100%,60%,0.5)] text-[hsl(320,100%,60%)] bg-transparent hover:bg-[hsl(320,100%,60%,0.1)] hover:border-[hsl(320,100%,60%)] transition-all duration-300 font-heading">
+              <motion.button 
+                className="px-10 py-4 text-sm font-bold uppercase tracking-[0.15em] rounded-lg font-heading backdrop-blur-xl"
+                style={{
+                  background: 'linear-gradient(135deg, hsl(180, 100%, 50%, 0.1), hsl(180, 100%, 50%, 0.05))',
+                  border: '2px solid hsl(180, 100%, 50%, 0.5)',
+                  color: 'hsl(180, 100%, 70%)',
+                  textShadow: '0 0 10px hsl(180, 100%, 50%, 0.5)',
+                  boxShadow: '0 0 20px hsl(180, 100%, 50%, 0.2), inset 0 0 15px hsl(180, 100%, 50%, 0.05)',
+                }}
+                whileHover={{ 
+                  scale: 1.02,
+                  boxShadow: '0 0 30px hsl(180, 100%, 50%, 0.4), inset 0 0 20px hsl(180, 100%, 50%, 0.1)'
+                }}
+                whileTap={{ scale: 0.98 }}
+              >
                 Explore Events
-              </button>
+              </motion.button>
             </Link>
           </motion.div>
 
-          {/* Stats - styled like reference with corner brackets */}
+          {/* Stats - Glassy cards */}
           <motion.div
             className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
             initial={{ opacity: 0 }}
@@ -123,22 +194,46 @@ const HolographicHero = () => {
             {stats.map((stat, index) => (
               <motion.div 
                 key={stat.label}
-                className="group relative p-6 bg-[hsl(220,25%,8%,0.6)] border border-[hsl(170,100%,50%,0.2)] rounded-lg hover:border-[hsl(170,100%,50%,0.5)] transition-all duration-300 backdrop-blur-sm"
+                className="group relative p-6 rounded-xl backdrop-blur-xl"
+                style={{
+                  background: 'linear-gradient(135deg, hsl(180, 100%, 50%, 0.08), hsl(180, 100%, 50%, 0.02))',
+                  border: '1px solid hsl(180, 100%, 50%, 0.2)',
+                  boxShadow: '0 0 20px hsl(180, 100%, 50%, 0.1), inset 0 0 20px hsl(180, 100%, 50%, 0.03)',
+                }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 + index * 0.1 }}
-                whileHover={{ y: -4 }}
+                whileHover={{ 
+                  y: -4,
+                  boxShadow: '0 0 30px hsl(180, 100%, 50%, 0.3), inset 0 0 25px hsl(180, 100%, 50%, 0.05)',
+                  border: '1px solid hsl(180, 100%, 50%, 0.4)',
+                }}
               >
                 {/* Corner brackets */}
-                <div className="absolute top-1 left-1 w-3 h-3 border-t-2 border-l-2 border-[hsl(320,100%,60%)] opacity-70" />
-                <div className="absolute top-1 right-1 w-3 h-3 border-t-2 border-r-2 border-[hsl(320,100%,60%)] opacity-70" />
-                <div className="absolute bottom-1 left-1 w-3 h-3 border-b-2 border-l-2 border-[hsl(320,100%,60%)] opacity-70" />
-                <div className="absolute bottom-1 right-1 w-3 h-3 border-b-2 border-r-2 border-[hsl(320,100%,60%)] opacity-70" />
+                <div className="absolute top-1 left-1 w-3 h-3 border-t-2 border-l-2 border-[hsl(180,100%,50%)] opacity-60" />
+                <div className="absolute top-1 right-1 w-3 h-3 border-t-2 border-r-2 border-[hsl(180,100%,50%)] opacity-60" />
+                <div className="absolute bottom-1 left-1 w-3 h-3 border-b-2 border-l-2 border-[hsl(180,100%,50%)] opacity-60" />
+                <div className="absolute bottom-1 right-1 w-3 h-3 border-b-2 border-r-2 border-[hsl(180,100%,50%)] opacity-60" />
 
-                <div className="font-hero text-3xl md:text-4xl font-bold text-[hsl(170,100%,50%)] mb-2 drop-shadow-[0_0_15px_hsl(170,100%,50%,0.5)]">
+                <div 
+                  className="font-hero text-3xl md:text-4xl font-bold mb-2"
+                  style={{
+                    color: 'hsl(180, 100%, 70%)',
+                    textShadow: `
+                      0 0 15px hsl(180, 100%, 50%, 0.8),
+                      0 0 30px hsl(180, 100%, 50%, 0.5)
+                    `,
+                  }}
+                >
                   {stat.value}
                 </div>
-                <div className="text-xs font-heading text-muted-foreground font-semibold uppercase tracking-[0.2em]">
+                <div 
+                  className="text-xs font-heading font-semibold uppercase tracking-[0.2em]"
+                  style={{
+                    color: 'hsl(180, 50%, 60%)',
+                    textShadow: '0 0 8px hsl(180, 100%, 50%, 0.3)',
+                  }}
+                >
                   {stat.label}
                 </div>
               </motion.div>
@@ -153,9 +248,19 @@ const HolographicHero = () => {
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <div className="w-6 h-10 rounded-full border-2 border-[hsl(170,100%,50%,0.3)] flex items-start justify-center p-2">
+        <div 
+          className="w-6 h-10 rounded-full flex items-start justify-center p-2"
+          style={{
+            border: '2px solid hsl(180, 100%, 50%, 0.4)',
+            boxShadow: '0 0 15px hsl(180, 100%, 50%, 0.2)',
+          }}
+        >
           <motion.div 
-            className="w-1.5 h-1.5 rounded-full bg-[hsl(170,100%,50%)]"
+            className="w-1.5 h-1.5 rounded-full"
+            style={{
+              background: 'hsl(180, 100%, 50%)',
+              boxShadow: '0 0 10px hsl(180, 100%, 50%)',
+            }}
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
           />
