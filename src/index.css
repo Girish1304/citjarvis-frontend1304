@@ -51,7 +51,8 @@ html {
     --glow-green: 0 0 30px hsl(120 100% 50% / 0.5);
 
     /* Fonts */
-    --font-display: 'Orbitron', sans-serif;
+    --font-display: 'Space Grotesk', 'Orbitron', sans-serif;
+    --font-heading: 'Manrope', sans-serif;
     --font-body: 'Inter', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
 
@@ -77,9 +78,31 @@ html {
     letter-spacing: -0.01em;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2 {
     font-family: var(--font-display);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  h3, h4, h5, h6 {
+    font-family: var(--font-heading);
     letter-spacing: 0.02em;
+    font-weight: 600;
+  }
+
+  /* Specific heading styles */
+  .hero-title {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* Labels and badges */
+  .label-text {
+    font-family: var(--font-heading);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
   }
 }
 

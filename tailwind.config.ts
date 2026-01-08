@@ -14,9 +14,11 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Bebas Neue', 'sans-serif'],
-        body: ['Space Grotesk', 'sans-serif'],
-        mono: ['Space Grotesk', 'monospace'],
+        display: ['Space Grotesk', 'Orbitron', 'sans-serif'],
+        heading: ['Manrope', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+        hero: ['Orbitron', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
