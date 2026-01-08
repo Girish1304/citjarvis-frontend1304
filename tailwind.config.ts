@@ -19,6 +19,8 @@ export default {
         body: ['Inter', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
         hero: ['Orbitron', 'sans-serif'],
+        ultra: ['Audiowide', 'Orbitron', 'sans-serif'],
+        tech: ['Rajdhani', 'Manrope', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
