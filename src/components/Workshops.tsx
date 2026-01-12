@@ -1,8 +1,6 @@
-import { motion, useInView, AnimatePresence } from "framer-motion";
-import { useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Cpu, Factory, Code, Car, Bot, BarChart3, ChevronDown, Users, Clock } from "lucide-react";
-import { Link } from "react-router-dom";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { Cpu, Factory, Code, Car, Bot, BarChart3, Users, Clock } from "lucide-react";
 
 // Import workshop images
 import iotImg from "@/assets/workshops/iot.png";
@@ -31,14 +29,6 @@ const workshops = [
     duration: "1 - 1.5 hrs",
     capacity: "30 participants",
     price: "₹150",
-    topics: [
-      "Introduction to IoT architecture",
-      "Sensor integration and data collection",
-      "ESP32/Arduino programming basics",
-      "Cloud connectivity (AWS IoT/ThingSpeak)",
-      "Building a complete IoT project",
-      "Real-world industrial applications",
-    ],
   },
   {
     id: 2,
@@ -49,14 +39,6 @@ const workshops = [
     duration: "1 - 1.5 hrs",
     capacity: "25 participants",
     price: "₹150",
-    topics: [
-      "Introduction to industrial automation",
-      "PLC basics and ladder logic programming",
-      "Sensors and actuators in automation",
-      "SCADA system fundamentals",
-      "HMI design principles",
-      "Industry 4.0 concepts",
-    ],
   },
   {
     id: 3,
@@ -67,14 +49,6 @@ const workshops = [
     duration: "1 - 1.5 hrs",
     capacity: "20 participants",
     price: "₹150",
-    topics: [
-      "ROS2 architecture and concepts",
-      "Setting up ROS2 environment",
-      "Nodes, topics, and services",
-      "Robot simulation with Gazebo",
-      "Navigation and path planning",
-      "Building autonomous robot behaviors",
-    ],
   },
   {
     id: 4,
@@ -85,14 +59,6 @@ const workshops = [
     duration: "1 - 1.5 hrs",
     capacity: "35 participants",
     price: "₹150",
-    topics: [
-      "Introduction to BAJA SAE competition",
-      "Vehicle design fundamentals",
-      "Chassis and suspension design",
-      "Powertrain selection and setup",
-      "Fabrication techniques",
-      "Testing and validation methods",
-    ],
   },
   {
     id: 5,
@@ -103,14 +69,6 @@ const workshops = [
     duration: "1 - 1.5 hrs",
     capacity: "20 participants",
     price: "₹150",
-    topics: [
-      "Introduction to industrial robotics",
-      "KUKA robot specifications and capabilities",
-      "KRL programming basics",
-      "Robot path planning and motion",
-      "Pick and place operations",
-      "Safety protocols and best practices",
-    ],
   },
   {
     id: 6,
@@ -121,25 +79,12 @@ const workshops = [
     duration: "1 - 1.5 hrs",
     capacity: "40 participants",
     price: "₹150",
-    topics: [
-      "Introduction to ERP systems",
-      "SAP modules overview",
-      "SAP S/4HANA fundamentals",
-      "Business process integration",
-      "Reporting and analytics",
-      "Career opportunities in SAP",
-    ],
   },
 ];
 
 const Workshops = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [expandedId, setExpandedId] = useState<number | null>(null);
-
-  const toggleExpand = (id: number) => {
-    setExpandedId(expandedId === id ? null : id);
-  };
 
   return (
     <section id="workshops" className="py-20 md:py-28 relative overflow-hidden">
@@ -235,7 +180,7 @@ const Workshops = () => {
                   </p>
                   
                   {/* Workshop meta info */}
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-2">
                     <div className="flex items-center gap-1.5 text-xs px-2.5 py-1.5 bg-[hsl(180,100%,50%,0.1)] border border-[hsl(180,100%,50%,0.2)] rounded-full">
                       <Clock className="w-3 h-3 text-[hsl(180,100%,60%)]" />
                       <span className="text-[hsl(180,80%,70%)]">{workshop.duration}</span>
@@ -245,57 +190,6 @@ const Workshops = () => {
                       <span className="text-[hsl(180,80%,70%)]">{workshop.capacity}</span>
                     </div>
                   </div>
-
-                  {/* Topics Toggle */}
-                  <button
-                    onClick={() => toggleExpand(workshop.id)}
-                    className="flex items-center gap-2 text-[hsl(180,100%,60%)] hover:text-[hsl(180,100%,70%)] transition-colors mb-4 w-full"
-                  >
-                    <span className="text-xs font-medium">
-                      {expandedId === workshop.id ? "Hide Topics" : "View Topics"}
-                    </span>
-                    <motion.div
-                      animate={{ rotate: expandedId === workshop.id ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <ChevronDown className="w-4 h-4" />
-                    </motion.div>
-                  </button>
-
-                  {/* Expandable Topics Section */}
-                  <AnimatePresence>
-                    {expandedId === workshop.id && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="pb-4 border-t border-[hsl(180,100%,50%,0.2)] pt-4 mb-4">
-                          <ul className="space-y-2">
-                            {workshop.topics.map((topic, topicIndex) => (
-                              <motion.li
-                                key={topicIndex}
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: topicIndex * 0.05 }}
-                                className="flex items-start gap-2 text-sm"
-                                style={{
-                                  color: 'hsl(180, 40%, 60%)',
-                                  textShadow: '0 0 5px hsl(180, 100%, 50%, 0.2)',
-                                }}
-                              >
-                                <div className="w-1.5 h-1.5 bg-[hsl(180,100%,50%)] rounded-full mt-1.5 flex-shrink-0" />
-                                <span>{topic}</span>
-                              </motion.li>
-                            ))}
-                          </ul>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-
                 </div>
               </div>
             </motion.div>
